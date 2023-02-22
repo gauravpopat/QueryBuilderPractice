@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/',[HomeController::class,'index'])->name('index');
+Route::post('/',[HomeController::class,'create'])->name('create');
+
+Route::get('/editform/{id?}',[HomeController::class,'editform'])->name('editform');
+Route::post('update/{id?}',[HomeController::class,'update'])->name('update');
+
+Route::get('/delete/{id?}',[HomeController::class,'delete'])->name('delete');
